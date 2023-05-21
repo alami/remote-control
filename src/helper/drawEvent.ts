@@ -14,6 +14,11 @@ export default async function drawEvent (cmd:string, pos:string, pos2:string, st
             stream.write(`${cmd}_${pos}px`);
             console.log(`${cmd} ${pos}px`);
             break;
+        case 'rectangle':
+            await drawRectangular(+x, +y, +pos, +pos2)
+            stream.write(`${cmd}_${pos}px_${pos2}px`);
+            console.log(`${cmd} ${pos}px ${pos2}px`);
+            break;
     }
 }
 
@@ -42,4 +47,22 @@ async function drawCircle(x:number, y:number, radius:number) {
         const newY = y + (radius * Math.sin(i))/2;
         await mouse.drag(straightTo(centerOf(new Region(newX, newY, 0-radius, 0))));
     };
+}
+
+async function drawRectangular(top:number, left:number, width:number, height:number) {
+    await mouse.click(Button.LEFT);
+    for (let i = 0; i < 4; i++) {
+        if(i==0) {
+            await mouse.drag(straightTo(centerOf(new Region(top, left, 0, height))));
+        } else if(i===1){
+            const {x, y} = await mouse.getPosition();
+            await mouse.drag(straightTo(centerOf(new Region(x, y, 0-width, 0))));
+        } else if(i===2) {
+            const {x, y} = await mouse.getPosition();
+            await mouse.drag(straightTo(centerOf(new Region(x, y, 0, 0-height))));
+        } else {
+            const {x, y} = await mouse.getPosition();
+            await mouse.drag(straightTo(centerOf(new Region(x, y, width, 0))));
+        }
+    }
 }
