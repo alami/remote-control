@@ -1,7 +1,7 @@
-import { httpServer } from "./http_server/index";
+import httpServer from "./http_server/index";
 import "dotenv/config"
 import {createWebSocketStream, WebSocket, WebSocketServer} from "ws";
-import {socketHandler} from './helper/socketHandler'
+import socketHandler from './helper/socketHandler'
 
 const HTTP_PORT = Number(process.env.HTTP_PORT) || 8181;
 const WS_PORT = Number(process.env.WS_PORT) || 8080;

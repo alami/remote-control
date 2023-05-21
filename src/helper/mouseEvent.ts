@@ -1,7 +1,7 @@
 import  { mouse, left, right, up, down }from "@nut-tree/nut-js"
 import {Duplex} from "stream";
 
-export async function mouseEvent(com:string, pos:string, stream:Duplex) {
+export default async function mouseEvent(com:string, pos:string, stream:Duplex) {
     switch (com.split('_')[1]) {
         case 'up':
             mouse.move(up(+pos));
