@@ -1,3 +1,4 @@
+/build
 # dependencies
 /node_modules
 
@@ -15,4 +16,4 @@ Thumbs.db
 # Logs
 npm-debug.log
 
-.env
+#.env

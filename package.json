@@ -3,10 +3,11 @@
     "version": "1.0.0",
     "description": "Template for the WebSocket remote control task",
     "main": "index.js",
-    "type": "module",
     "scripts": {
-        "start": "node ./index.js",
-        "start:dev": "nodemon ./index.js",
+        "start": "npm run build && node ./build/index.js",
+        "build": "npx tsc",
+        "start:dev": "nodemon ./src/index.ts",
+        "dev": "nodemon ./src/index.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Andrei Auchynnikau",
